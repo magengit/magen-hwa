@@ -1,0 +1,3336 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Test URIs",
+		"_postman_id": "474e0d28-aace-bc22-5199-19800b73646e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Load policies from file",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen/load_policies_from_file",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get client location from CMX",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "Public123",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://{{cmx-address}}/api/location/v2/clients?macAddress=00:04:a3:69:b0:7a",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": ""
+					},
+					{
+						"key": "verify",
+						"value": "False",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get client location from CMX copy",
+			"request": {
+				"url": "http://{{cmx-address}}/api/location/v2/clients",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stop update thread",
+			"request": {
+				"url": "http://{{location-server-address}}/stop_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Start update thread",
+			"request": {
+				"url": "http://{{location-server-address}}/start_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set logging level (WARNING)",
+			"request": {
+				"url": "http://{{location-server-address}}/set_logging_level/warning/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set logging level (INFO)",
+			"request": {
+				"url": "http://{{location-server-address}}/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set logging level (DEBUG)",
+			"request": {
+				"url": "http://{{location-server-address}}/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get client location from server",
+			"request": {
+				"url": "http://{{location-server-address}}/data/get_client_location/00:04:a3:69:b0:7a/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update thread counters",
+			"request": {
+				"url": "http://{{location-server-address}}/test_thread_counter/1000000/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Reset_demo_data",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen/reset_demo/",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create_Multiple_Users",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_user:users/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"users\": {\n    \"user\": [\n      {\n        \"department\": \"CSG\",\n        \"name\": \"Michael Lipman\",\n        \"position\": \"Distinguished Engineer\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"user\": \"mlipman@cisco.com\"\n      },\n      {\n        \"department\": \"CIIP\",\n        \"name\": \"Alena Lifar\",\n        \"position\": \"Intern\",\n        \"u_groups\" : [1],\n        \"u_clients\": [],\n        \"user\": \"alifar@cisco.com\"\n      },\n      {\n        \"department\": \"CNSG\",\n        \"name\": \"Paul Quinn\",\n        \"position\": \"Distinguished Engineer\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"user\": \"paulq@cisco.com\"\n      },\n      {\n        \"department\": \"CTAO\",\n        \"name\": \"Reinaldo Penno\",\n        \"position\": \"Director.Engineering\",\n        \"u_clients\": [],\n        \"u_groups\" : [1, 2],\n        \"user\": \"repenno@cisco.com\"\n      },\n      {\n        \"department\": \"CTAO\",\n        \"name\": \"Nuala\",\n        \"position\": \"Director.Finance\",\n        \"u_clients\": [],\n        \"u_groups\" : [4,5,6],\n        \"user\": \"nuala@cisco.com\"\n      }\n    ]\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Client Mlipman CMX",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-mlip-d8d92cbb0000/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"client\": [\n    {\n      \"user\": \"mlipman@cisco.com\",\n      \"revision\": \"1\",\n      \"device_id\": \"mac\",\n      \"uuid\": \"06a2fdf6-4bb2-4d09-mlip-d8d92cbb0000\",\n      \"ip\": \"192.168.1.9\",\n      \"mac\": \"00:04:a3:69:b0:7a\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_entitlements_mlipman_cmx",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-mlip-d8d92cbb0000/entitlements/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_validation_cookie_mlipman_cmx",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-mlip-d8d92cbb0000/entitlements/6052963b-113d-4eff-b8a9-589cae98a41a/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Policy_Contract_Create_Campus",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy\",\n            \"principal\": \"mlipman@cisco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"Nortech Campus\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Policy_Contract_Create no Location Constraint",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy\",\n            \"principal\": \"mlipman@cisco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Policy_Contract_Create_1st_Floor",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy\",\n            \"principal\": \"mlipman@cisco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"Nortech Campus>Nortech-1>1st Floor\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Policy_Contract_Create_1st_Floor Geo",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy\",\n            \"principal\": \"mlipman@cisco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 37.4224, \\\"longitude\\\": -121.9597, \\\"radius\\\": 20, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Policy_Contract_Create_1st_Floor_School",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy\",\n            \"principal\": \"mlipman@cisco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"Nortech Campus>Nortech-1>1st Floor>School\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete single client by uuid",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-mlip-d8d92cbb0000",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete policy contract by uuid",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/2acf4912-389b-40b3-941b-b5c5292ee3b5/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all policy contracts copy",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all policy contracts",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put client notification to CMX",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "admin",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://{{cmx-address}}/api/config/v1/notification",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"Michael-auto-test-00:0b:6b:a8:43:99\",\n  \"userId\": \"testapi\",\n  \"rules\": [ { \"conditions\": [ { \"condition\": \"locationupdate.deviceType == client\"},\n                               { \"condition\": \"locationupdate.macAddressList == 00:0b:6b:a8:43:99;\"}\t] } ],\n  \"subscribers\": [ { \"receivers\": [ { \"uri\": \"http://10.98.89.19:5003/data_cmx_location_update/\",\n                                      \"messageFormat\": \"JSON\",\n                                      \"qos\": \"AT_MOST_ONCE\"} ] } ],\n  \"enabled\": \"True\",\n  \"enableMacScrambling\": \"False\",\n  \"notificationType\": \"LocationUpdate\" }\n "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put client notification to CMX copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "Public123",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://{{cmx-address2}}/api/config/v1/notification",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rules\": [{\"conditions\": [\n    {\"condition\": \"locationupdate.deviceType == client\"}, \n    {\"condition\": \"locationupdate.macAddressList == 00:0b:6b:a8:43:99;\"}]}], \n \"enabled\": \"True\", \n \"subscribers\": [{\"receivers\": [{\"uri\": \"http://10.131.118.96:5003/data/cmx_location_update/\", \"qos\": \"AT_MOST_ONCE\", \"messageFormat\": \"JSON\"}]}], \n \"enableMacScrambling\": \"False\", \n \"name\": \"Magen-notification-00:0b:6b:a8:43:99\", \n \"userId\": \"testapi\", \n \"notificationType\": \"LocationUpdate\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put client notification to CMX copy copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "admin",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://{{cmx-address}}/api/config/v1/notification",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Magen-notification-00-04-a3-69-b0-7a\", \n \"userId\": \"admin\", \n \"subscribers\": [{\"receivers\": [{\"messageFormat\": \"JSON\", \"uri\": \"http://:5003/data/cmx_locationupdate_update/\", \"qos\": \"AT_MOST_ONCE\"}]}], \"rules\": [{\"conditions\": [{\"condition\": \"locatio\\\nnupdate.deviceType == client\"}, {\"condition\": \"locationupdate.macAddressList == 00:04:a3:69:b0:7a;\"}]}], \"enabled\": \"True\", \"enableMacScrambling\": \"False\", \"notificationType\": \"LocationUpdate\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Test Remote Api Calls",
+			"request": {
+				"url": "http://{{location-server-address}}/test_remote_api/10000/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"auth\": \"false\",\n  \"type\": \"get\",\n  \"uri\": \"http://172.17.0.6:80/\",\n  \"uri2\": \"http://172.17.0.5:5003/test_remote_api_call/\",\n  \"uri3\": \"http://localhost:5003/test_remote_api_call/\",\n  \"jsonBody\": {\"testkey\": \"testvalue\"}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get from nginx",
+			"request": {
+				"url": "http://192.168.99.100:8080/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stop update thread (Server2)",
+			"request": {
+				"url": "http://{{location-server2-address}}/stop_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set logging level (Server2)",
+			"request": {
+				"url": "http://{{location-server2-address}}/set_logging_level/warning/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Start update thread (aws)",
+			"request": {
+				"url": "http://{{aws-server-address}}/start_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stop update thread (aws)",
+			"request": {
+				"url": "http://{{aws-server-address}}/stop_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get (aws)",
+			"request": {
+				"url": "http://{{aws-server-address}}/data/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Start update thread (idp) copy",
+			"request": {
+				"url": "http://{{idp-server-address}}/start_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stop update thread (idp) copy",
+			"request": {
+				"url": "http://{{idp-server-address}}/stop_database_update_thread/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get (idp) copy",
+			"request": {
+				"url": "http://{{idp-server-address}}/data/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get (box)",
+			"request": {
+				"url": "http://{{box-app-server-address}}/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get (box) with path",
+			"request": {
+				"url": "http://{{box-app-server-address}}/testuri/mypath/bar",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.box.com/2.0/files/67280697685/content",
+			"request": {
+				"url": "https://api.box.com/2.0/files/67280697685/content",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer a7UtnsBXxHvEb8k8GTWgy8giflLGyNjt",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (box) logging level (INFO)",
+			"request": {
+				"url": "https://{{box-app-server-address}}/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (box) logging level (DEBUG)",
+			"request": {
+				"url": "https://{{box-app-server-address}}/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (idp) logging level (INFO)",
+			"request": {
+				"url": "https://{{idp-server-address}}/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (idp) logging level (DEBUG)",
+			"request": {
+				"url": "https://{{idp-server-address}}/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Policy_Contract_Create No Location",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy 2\",\n            \"principal\": \"mlipman@cisco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Client Mlipman CMX copy MALFORMED",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/uuid/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"client\": [\n    {\n      \"user\": \"mlipman@cisco.com\",\n      \"revision\": \"1\",\n      \"device_id\": \"mac\",\n      \"uuid\": \"06a2fdf6-4bb2-4d09-mlip-d8d92cbb0000\",\n      \"ip\": \"192.168.1.9\",\n      \"mac\": \"00:04:a3:69:b0:7a\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put client notification to CMX copy copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "Public123",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://{{cmx-address2}}/api/config/v1/notification",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rules\": [{\"conditions\": [\n    {\"condition\": \"locationupdate.deviceType == client\"}, \n    {\"condition\": \"locationupdate.macAddressList == 00:0b:6b:a8:43:99;\"}]}], \n \"enabled\": \"True\", \n \"subscribers\": [{\"receivers\": [{\"uri\": \"http://10.131.118.96:5003/data/cmx_location_update/\", \"qos\": \"AT_MOST_ONCE\", \"messageFormat\": \"JSON\"}]}], \n \"enableMacScrambling\": \"False\", \n \"name\": \"Magen-notification-00:0b:6b:a8:43:99\", \n \"userId\": \"testapi\", \n \"notificationType\": \"LocationUpdate\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set developer token",
+			"request": {
+				"url": "https://{{box-app-server-address}}/set_developer_cookie/tO91QPTFTF7pGDyJXVBIXqcU5NaNAYMR/",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Users Rod Michael Nuala",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_user:users/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"users\": {\n    \"user\": [\n      {\n        \"department\": \"Accounting\",\n        \"name\": \"Rod Thompson\",\n        \"position\": \"Distinguished Engineer\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"display_name\": \"rod\",\n        \"user\": \"rod@taxco.com\"\n      },\n      {\n        \"department\": \"Accounting\",\n        \"name\": \"Ann Samborski\",\n        \"position\": \"College Intern\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"display_name\": \"rod\",\n        \"user\": \"asambors@bu.edu\"\n      },\n      {\n        \"department\": \"CSG\",\n        \"name\": \"Michael Lipman\",\n        \"position\": \"Distinguished Engineer\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"display_name\": \"mlipman\",\n        \"user\": \"mlipman@cisco.com\"\n      },\n      {\n        \"department\": \"CTAO\",\n        \"name\": \"Nuala\",\n        \"position\": \"Director.Finance\",\n        \"u_clients\": [],\n        \"u_groups\" : [4,5,6],\n        \"display_name\": \"nuala\",\n        \"user\": \"nuala@cisco.com\"\n      }\n    ]\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Client Rod (explicit)",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-rodt-d8d92cbb0000/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"client\": [\n    {\n      \"user\": \"rod@taxco.com\",\n      \"revision\": \"1\",\n      \"device_id\": \"iPad\",\n      \"uuid\": \"06a2fdf6-4bb2-4d09-rodt-d8d92cbb0000\",\n      \"ip\": \"192.168.1.100\",\n      \"mac\": \"AB.12.CD.34.EF.56\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus finance policy\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Copy",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"finance policy\",\n            \"principal\": \"\",\n            \"principal_group\": \"finance\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Ann Ingestion",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"ann ingestion policy\",\n            \"principal\": \"asambors@bu.edu\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Geolocation",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod finance policy\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 10.0, \\\"longitude\\\": 10.0, \\\"radius\\\": 10, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Geolocation Office",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod finance policy\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.36543302909076, \\\"longitude\\\": -71.07632189806539, \\\"radius\\\": 20, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Geolocation Home",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod finance policy\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.4733770, \\\"longitude\\\": -71.609148, \\\"radius\\\": 40, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Geo Kontiki",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod policy kontiki\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"architecture\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.36547528700336, \\\"longitude\\\": -71.0764077347296, \\\"radius\\\": 8.0, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Geo Trieste",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod policy trieste\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"design\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.36541871058496, \\\"longitude\\\": -71.07624513389109, \\\"radius\\\": 8.0, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Geolocation Home copy",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod geo policy\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"architecture\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.47330225, \\\"longitude\\\": -71.60884220, \\\"radius\\\": 40, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - 999",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Nortech Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\":-999.0,\"longitude\":-999.0,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod 10,10",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"SJC Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 10.00001,\"longitude\": 10.00001,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - 10.001,10.001",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 10.001,\"longitude\": 10.001,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Home",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Nortech Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.4733770,\"longitude\": -71.609148,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.365465998669116,\"longitude\": -71.07660381080468,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office copy",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.36544864350663,\"longitude\": -71.07648194650966,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office copy copy",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.3653861914062,\"longitude\": -71.07640605390614,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office copy copy copy",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.36540090756996,\"longitude\": -71.07645821739169,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office copy copy copy copy",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.36538166814132,\"longitude\": -71.07645034413063,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office River side",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Cambridge Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.36543139910455,\"longitude\": -71.07632503220975,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office River side copy",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Cambridge Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.36544419562003,\"longitude\": -71.07634046394726,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - Rod - Office River side copy copy",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"Rod\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"AB.12.CD.34.EF.56\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Cambridge Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.3654604105318,\"longitude\": -71.07495251376618,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_entitlements_rod",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_client:clients/client/87b9ad0d-3156-446a-b52c-0c7b576a89df/entitlements/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_entitlements_rod UUID",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-rodt-d8d92cbb0000/entitlements/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check entitlements Rod",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-rodt-d8d92cbb0000/entitlements/8ed152fe-44bc-4bcf-ab60-b3db57e7e0f9/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS Geo Trieste copy",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus policy trieste\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"design\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.36541871058496, \\\"longitude\\\": -71.07624513389109, \\\"radius\\\": 8.0, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS budgeting",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus finance policy\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS Geo Kontiki",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus policy kontiki\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"architecture\",\n            \"time_validity_pi\" : 2592000,\n\t        \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 42.36547528700336, \\\"longitude\\\": -71.0764077347296, \\\"radius\\\": 8.0, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete single client by uuid copy",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-rodt-d8d92cbb0000/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://upload.box.com/api/2.0/files/content",
+			"request": {
+				"url": "https://upload.box.com/api/2.0/files/content",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer a1d5kqGDPCK7EaGsPrsVGNadjrUrmYxB",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "attributes",
+							"value": "{\"name\":\"tigers.jpeg\", \"parent\":{\"id\":\"11446498\"}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"value": "@myfile.jpg",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"enabled": true,
+							"src": "Location_Test.postman_collection"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.box.com/2.0/files/67280697685/metadata",
+			"request": {
+				"url": "https://api.box.com/2.0/files/70844553889/metadata",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer w3SlUXkXm8IWBvG7vamYuLX3kb0gFFOw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Box trash folder",
+			"request": {
+				"url": "https://api.box.com/2.0/folders/trash/items?limit=2&offset=0 ",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer rGi0up1mbdZlKOA0dzUmCRrmP6EUB1cf",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Box trashed file",
+			"request": {
+				"url": "https://api.box.com/2.0/files/71427640977/trash",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer rGi0up1mbdZlKOA0dzUmCRrmP6EUB1cf",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Box folder",
+			"request": {
+				"url": "https://api.box.com/2.0/folders/0/items",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer uyW6CiIuYBPRZ2EXUiQrt28h8W6c8RzK",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Box file",
+			"request": {
+				"url": "https://api.box.com/2.0/files/71427611769",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer rGi0up1mbdZlKOA0dzUmCRrmP6EUB1cf",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Clients",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_user:users/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_All_Policy_Contracts",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Info_All_Events",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_event:events/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show location stores",
+			"request": {
+				"url": "http://{{location-server-address}}/data/show_location_stores/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Clear location stores",
+			"request": {
+				"url": "http://{{location-server-address}}/data/clear_location_stores/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (magen) logging level (INFO)",
+			"request": {
+				"url": "http://{{ip-address}}:5000/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (magen) logging level (DEBUG)",
+			"request": {
+				"url": "http://{{ip-address}}:5000/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Reset_demo_data copy",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen/reset_demo/",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Users Rod Michael Nuala copy",
+			"request": {
+				"url": "http://{{ip-address}}:5000/data/magen_user:users/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"users\": {\n    \"user\": [\n    {\n        \"department\": \"finance\",\n        \"name\": \"Rod Thompson\",\n        \"position\": \"finance user\",\n        \"u_clients\": [],\n         \"u_groups\": [\n          5\n        ],\n        \"user\": \"rod@taxco.com\",\n        \"uuid\": \"de6d49c6-537d-4c1d-8e1f-25e375a7d429\"\n    },\n    {\n        \"department\": \"Accounting\",\n        \"name\": \"Ann Samborski\",\n        \"position\": \"College Intern\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"display_name\": \"asambors\",\n        \"user\": \"asambors@bu.edu\"\n      },\n      {\n        \"department\": \"CSG\",\n        \"name\": \"Michael Lipman\",\n        \"position\": \"Distinguished Engineer\",\n        \"u_groups\" : [1, 2],\n        \"u_clients\": [],\n        \"display_name\": \"mlipman\",\n        \"user\": \"mlipman@cisco.com\"\n      },\n      {\n        \"department\": \"engineering\",\n        \"name\": \"Cisco Live\",\n        \"position\": \"engineering user\",\n        \"u_clients\": [],\n        \"u_groups\": [\n          1\n        ],\n        \"user\": \"clus16.demo@gmail.com\",\n        \"uuid\": \"b6f327e8-6848-410e-8f9c-5158b6799c1c\"\n      },\n      {\n        \"department\": \"finance\",\n        \"name\": \"Nuala Simons\",\n        \"position\": \"finance manager\",\n        \"u_clients\": [],\n        \"u_groups\": [\n          5\n        ],\n        \"user\": \"nuala@enterprise.com\",\n        \"uuid\": \"b4083251-6db3-48d4-ac62-c14d497d5450\"\n      }\n    ]\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Client clus16",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-cl16-abcdefgh1111/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"client\": [\n    {\n      \"user\": \"clus16.demo@gmail.com\",\n      \"revision\": \"1\",\n      \"device_id\": \"ipad\",\n      \"uuid\": \"06a2fdf6-4bb2-4d09-cl16-abcdefgh1111\",\n      \"ip\": \"192.168.1.9\",\n      \"mac\": \"b8:e9:37:3c:69:d8\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Client clus16 copy",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_client:clients/client/06a2fdf6-4bb2-4d09-cl16-abcdefgh2222/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"client\": [\n    {\n      \"user\": \"clus16.demo@gmail.com\",\n      \"revision\": \"1\",\n      \"device_id\": \"mac\",\n      \"uuid\": \"06a2fdf6-4bb2-4d09-cl16-abcdefgh2222\",\n      \"ip\": \"10.22.1.2\",\n      \"mac\": \"80:1f:02:e4:83:ce\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Ann Ingestion",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"ann ingestion policy\",\n            \"principal\": \"asambors@bu.edu\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for Rod Ingestion",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"rod ingestion policy\",\n            \"principal\": \"rod@taxco.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS Clue 1",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus16 policy clue1\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"architecture\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.08827725624467, \\\"longitude\\\": -115.17822111723922, \\\"radius\\\": 80, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS Clue 2",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus16 policy clue2\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"roadmap\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.08920790889163, \\\"longitude\\\": -115.17669427276871, \\\"radius\\\": 130, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS Clue 3",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus16 policy clue3\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"design\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.089235, \\\"longitude\\\": -115.178725, \\\"radius\\\": 80, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS budgeting Las Vegas",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus finance policy\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"budgeting\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.100964, \\\"longitude\\\": -115.173026, \\\"radius\\\": 30000, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS earnings Las Vegas",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus finance policy\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"earnings\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.08827725624467, \\\"longitude\\\": -115.17822111723922, \\\"radius\\\": 8000000, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS document",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus document policy\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"TestDocument.txt\",\n            \"resource_group\": \"\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.08827725624467, \\\"longitude\\\": -115.17822111723922, \\\"radius\\\": 8000000, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy for CLUS *",
+			"request": {
+				"url": " http://{{ip-address}}:5000/data/magen_policy_contract:policy_contracts/policy_contract/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policy_contract\": [\n        {   \n            \"name\" : \"clus finance policy\",\n            \"principal\": \"clus16.demo@gmail.com\",\n            \"principal_group\": \"\",\n            \"action\": \"open\",\n            \"resource_doc\": \"\",\n            \"resource_group\": \"*\",\n            \"time_validity_pi\" : 2592000,\n            \"location_name\": \"{\\\"Geolocation\\\": {\\\"latitude\\\": 36.08827725624467, \\\"longitude\\\": -115.17822111723922, \\\"radius\\\": 8000000, \\\"unit\\\": \\\"DEGREES\\\", \\\"radius_unit\\\": \\\"METERS\\\"}}\"\n        }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_entitlements V2",
+			"request": {
+				"url": "http://{{ip-address}}:5000/magen/policy/v.2/magen_client:clients/client/entitlements/?midToken=06a2fdf6-4bb2-4d09-cl16-abcdefgh1111&action=open",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_entitlements V2 copy",
+			"request": {
+				"url": "http://{{ip-address}}:5000/magen/policy/v.2/magen_client:clients/client/entitlements/?midToken=06a2fdf6-4bb2-4d09-cl16-abcdefgh2222&action=open",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check entitlements V2",
+			"request": {
+				"url": "http://{{ip-address}}:5000/magen/policy/v.2/magen_client:clients/client/entitlements/validation/?midToken=06a2fdf6-4bb2-4d09-cl16-abcdefgh1111&assetId=f30d8067-7034-44a2-afdf-bf96390509ea&action=open&returnKey=True&application=box",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check entitlements V2 copy",
+			"request": {
+				"url": "http://{{ip-address}}:5000/magen/policy/v.2/magen_client:clients/client/entitlements/validation/?midToken=06a2fdf6-4bb2-4d09-cl16-abcdefgh2222&assetId=6f3dca85-0de7-4ed7-a1dd-c57360b2b215&action=open&returnKey=True&application=box",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Basic YWRtaW46UHVibGljMTIz",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "//verify",
+						"value": "False",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - clus16 - Home",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"clus16DeviceA\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"b8:e9:37:3c:69:d8\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Nortech Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.4733770,\"longitude\": -71.609148,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Location Update - clus16 copy - Home",
+			"request": {
+				"url": "http://{{ip-address}}:5003/data/cmx_locationupdate_update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"notifications\":\n    [{\"notificationType\":\"inout\",\n      \"subscriptionName\":\"clus16DeviceB\",\n      \"entity\":\"WIRELESS_CLIENTS\",\n      \"deviceId\":\"80:1f:02:e4:83:ce\",\n      \"lastSeen\":\"2016-06-17T14:19:57.462000+00:00\",\n      \"locationMapHierarchy\":\"Nortech Campus\",\n      \"locationCoordinate\":{\"x\":55.21126,\"y\":29.913364,\"z\":0.0,\"unit\":\"FEET\"},\n      \"geoCoordinate\":{\"latitude\": 42.4733770,\"longitude\": -71.609148,\"unit\":\"DEGREES\",\"lattitude\":-999.0},\n      \"confidenceFactor\":144.0,\n      \"apMacAddress\":null,\n      \"ssid\":null,\n      \"band\":null,\n      \"floorId\":727035700041482283,\n      \"batteryInfo\":null,\n      \"vendorData\":null,\n      \"boundary\":\"INSIDE\",\n      \"areaType\": \"FLOOR\",\n      \"timestamp\":1454192695475}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://ec2-52-42-87-233.us-west-2.compute.amazonaws.com:5010/asset_key/new/",
+			"request": {
+				"url": "http://ec2-52-42-87-233.us-west-2.compute.amazonaws.com:5010/asset_key/new/",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"asset_id\": \"e7431ec2-f770-4a40-bbba-1878d41cccff\",\n  \"format\": \"json\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (key) logging level (DEBUG)",
+			"request": {
+				"url": "http://{{ip-address}}:5010/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (key) logging level (INFO)",
+			"request": {
+				"url": "http://{{ip-address}}:5010/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (box) logging level (DEBUG)",
+			"request": {
+				"url": "https://{{box-app-server-address}}/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (box) logging level (INFO)",
+			"request": {
+				"url": "https://{{box-app-server-address}}/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.box.com/oauth2/token",
+			"request": {
+				"url": "https://api.box.com/oauth2/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "//Authorization",
+						"value": "Bearer Gx8gRv0nTohurtVscaUcI4cEluSeXbUL",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "code",
+							"value": "z2xgwpyfub4wYforvSCEbiN7uvDu74Dc",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "k4rpgbzdiqsrj8aoso8jnfbeqy6smkzi",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "FiQsVW9cqi9SL4fAAP9sZXp1523NAbLl",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://mlipmandev.clus16-magen.com/auth_callback",
+							"type": "text",
+							"enabled": false
+						}
+					]
+				},
+				"description": "Box auth token"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.box.com/2.0/users/me",
+			"request": {
+				"url": "https://api.box.com/2.0/users/me",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer NygQ6ckvpu8kbqzUqyiNIAuqAl9ei8Y5",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get box user"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Key for Asset",
+			"request": {
+				"url": "http://{{ip-address}}:5010/asset_key/6e5062c4-3dca-41be-a298-e124e1633d9b",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"format\" : \"json\" }\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.whatismyip.com/",
+			"request": {
+				"url": "https://www.whatismyip.com/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.cloudlock.com/ccs",
+			"request": {
+				"url": "https://api.cloudlock.com/ccs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer cef02514-cad3-49b2-87af-9921ab4a4638",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contents\": [\n        {\n            \"id\": \"default.txt\",\n            \"data\": \"NDAyNDAwNzE0NDI1Mjg0Nwo0NTU2NDY4ODc1NDIwOTI4CjQ3MTYxMTcyNTcwNTIwNzUKNDE1OTU1OTkzNjExODM0NAo0MDI0MDA3MTY5NDA2MjYw\",\n            \"field\": \"document\",\n            \"mime\": \"text/plain\"\n            }\n        ],\n    \"content_policies\": [\n        {\n            \"name\": \"CCN\",\n            \"description\": \"CCN\",\n            \"id\": \"CCN\",\n            \"matchers\": [\n                {\n                    \"type\": \"CCN\",\n                    \"id\": \"matcher-1\",\n                    \"breadth\": \"MEDIUM\"\n                    }\n                ]\n            }\n        ]\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.cloudlock.com/api/v2/ccs",
+			"request": {
+				"url": "https://api.cloudlock.com/api/v2/ccs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer cd7ff55d-f873-49ef-94e3-19d9eaf53b03",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"contents\": [{\"id\": \"PCI.txt\", \"data\": \"dGVzdCBzdHJpbmcgQ0NOIDEyMzQtNTY3OC05MDAyLTEwMDM=\", \"field\": \"document\"}], \"matchers\": [{\"name\": \"CCN\", \"description\": \"CCN\", \"id\": \"CCN\", \"type\": \"CCN\", \"breadth\": \"MEDIUM\"}]}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Box View Link",
+			"request": {
+				"url": "https://api.box.com/2.0/files/99503579195?querystring={\"fields\": \"expiring_embed_link\"}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer HubOQBRP7XwRm1kcjkutHl1SDhINWlM6",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Box get folder info",
+			"request": {
+				"url": "https://api.box.com/2.0/folders/8647152721",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer njwS6jFArwEGusiKeyiS46qK03NHWRzR",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Bearer ypwnxvQZHVK5j3mpZzCUnwHE83UNPcNn",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Box get root folder info",
+			"request": {
+				"url": "https://api.box.com/2.0/folders/0",
+				"method": "GET",
+				"header": [
+					{
+						"key": "//Authorization",
+						"value": "Bearer njwS6jFArwEGusiKeyiS46qK03NHWRzR",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer ypwnxvQZHVK5j3mpZzCUnwHE83UNPcNn",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Box get file info",
+			"request": {
+				"url": "https://api.box.com/2.0/files/99734269262",
+				"method": "GET",
+				"header": [
+					{
+						"key": "//Authorization",
+						"value": "Bearer njwS6jFArwEGusiKeyiS46qK03NHWRzR",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer OBlpQZzzsRXfTlmEGWUVW84MTdJWubys",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Box create folder",
+			"request": {
+				"url": "https://api.box.com/2.0/folders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 4QolyxMoyhRjRuTOCmZqKrPIMEGc4Pvd",
+						"description": ""
+					},
+					{
+						"key": "//Authorization",
+						"value": "Bearer OBlpQZzzsRXfTlmEGWUVW84MTdJWubys",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"random12301204\",\n    \"parent\": {\"id\": \"8647152721\"}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (ingestion) logging level (INFO) copy",
+			"request": {
+				"url": "http://{{ip-address}}:5020/set_logging_level/info/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set (ingestion) logging level (DEBUG) copy",
+			"request": {
+				"url": "http://{{ip-address}}:5020/set_logging_level/debug/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

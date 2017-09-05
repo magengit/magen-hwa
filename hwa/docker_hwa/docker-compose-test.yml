@@ -1,0 +1,11 @@
+version: "2"
+services:
+  hwa_test:
+    image: magen_hwa:v1.0
+    container_name: magen_hwa_test
+    command: bash -c "make test_travis"
+    ports:
+      - "5002:5002"
+    volumes:
+      - ../..:/opt/server
+      - ~/magen_data/hwa/:/opt/data/

@@ -1,0 +1,24 @@
+# run docker image using installed pkg, not source: mount /opt/svc for cfg/logs
+# ("runpkg" vs "rundev")
+version: "2"
+
+networks:
+  default:
+    external:
+      name: magen_net
+
+services:
+  magen_hwa:
+    build: .
+    image: magen_hwa:v1.0
+    container_name: magen_hwa
+    command: bash -c '(echo "LAUNCHING MAGEN_HWA CONTAINER.  NOTE -- OUTPUT ALSO LOGGED UNDER DIR=~/magen_data/hwa, TO hwa_server.log FILE AND TO hwa_logs/ SUBDIRECTORY" && hwa_server.py --data-dir /opt/svc/data --console-log-level 'info' --log-dir /opt/svc/hwa_logs)  2>&1 | tee -a /opt/svc/hwa_server.log'
+    ports:
+      - "443:5002"
+      - "5002:5002"
+    volumes:
+      - ~/magen_data/hwa/:/opt/svc/
+    stdin_open: true 
+    tty: true
+    networks:
+      - default

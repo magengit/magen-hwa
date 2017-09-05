@@ -1,0 +1,117 @@
+{
+    "users": [
+	{
+	    "userId": "6",
+	    "firstName": "Wiley",
+	    "lastName": "Coyote",
+	    "userGroup": "finance",
+	    "password": "pw",
+	    "type": "user",
+	    "idp": "cisco_box",
+	    "u_groups": [
+		"finance"
+	    ],
+	    "lastLogin": null,
+	    "roles": [
+		"manager",
+		"viewer",
+		"user"
+	    ],
+	    "username": "wiley@acmebirdseed.com",
+	    "email": "wiley@acmebirdseed.com",
+	    "imgSrc": "user_wiley.png"
+	}
+    ],
+   "groups": [
+      {
+         "ug_id": "1",
+         "ug_name": "engineering"
+      },
+      {
+         "ug_id": "2",
+         "ug_name": "marketing"
+      },
+      {
+         "ug_id": "3",
+         "ug_name": "human_resource"
+      },
+      {
+         "ug_id": "4",
+         "ug_name": "finance"
+      }
+   ],
+   "connected_apps":[
+     {
+         "name": "sample_client",
+         "redirect_uris": [
+            "http://localhost:5228/oauth/callback",
+            "https://<host>:5002/oauth/callback/"
+         ],
+         "jwt_alg": "HS256",
+         "client_id": "<client_id>",
+         "client_secret": "<client_secret>",
+         "username": "admin@magen.com"
+      }
+   ],
+
+    "sample_magen_client": {
+	"username": "admin@magen.com",
+	"device": "https://localhost:5228/oauth/callback"
+    },
+    "domain": [
+	{
+            "name": "magen.com",
+            "idp": "magen",
+            "allow": "yes"
+	},
+	{
+            "name": "taxco.com",
+            "idp": "sf",
+            "allow": "yes"
+	}
+    ],
+    "ext_idp": [
+	{
+            "name": "go",
+            "desc": "google",
+            "client_id": "your_google_client_id",
+            "client_secret": "your_google_client_secret",
+            "authz_url": "https://accounts.google.com/o/oauth2/auth",
+            "token_url": "https://accounts.google.com/o/oauth2/token",
+            "user_info_url": "https://accounts.google.com/o/oauth2/token",
+            "redirect_uri": "https://your_magen_id_service_host/oauth/ext/callback",
+            "scopes": "openid profile address",
+            "code_challenge": null,
+            "code_challenge_method": null,
+            "token_info_url": "https://www.googleapis.com/oauth2/v3/tokeninfo"
+	},
+	{
+            "name": "sf",
+            "desc": "salesforce",
+            "client_id": "your_salesforce_client_id",
+            "client_secret": "your_salesforce_client_secret",
+            "authz_url": "https://login.salesforce.com/services/oauth2/authorize",
+            "token_url": "https://login.salesforce.com/services/oauth2/token",
+            "user_info_url": "https://login.salesforce.com/services/oauth2/userinfo",
+            "redirect_uri": "https://your_magen_id_service_host/oauth/ext/callback",
+            "scopes": "openid profile address",
+            "code_challenge": null,
+            "code_challenge_method": null,
+            "token_info_url": ""
+	},
+	{
+            "name": "cisco_box",
+            "desc": "cisco box web application",
+            "client_id": "",
+            "client_secret": "",
+            "authz_url": "",
+            "token_url": "",
+            "user_info_url": "",
+            "redirect_uri": "",
+            "scopes": "",
+            "code_challenge": null,
+            "code_challenge_method": null,
+            "token_info_url": ""
+	}
+    ]
+}

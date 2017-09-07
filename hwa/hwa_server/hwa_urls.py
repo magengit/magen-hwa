@@ -86,7 +86,7 @@ class HwaUrls(metaclass=Singleton):
         if self.src_version:
             srcfile_path = os.path.abspath(__file__)
             hwa_root = os.path.dirname(os.path.dirname(srcfile_path))
-            repo_root = os.path.dirname(hwa_root)
+            repo_root = os.path.dirname(hwa_root) + '/'
             cfgfile_maker = repo_root + 'lib/magen_helper/helper_scripts/' + cfgfile_maker
         if not os.path.isfile(self.hwa_flask_secret_file):
             subprocess.call(['bash', cfgfile_maker,

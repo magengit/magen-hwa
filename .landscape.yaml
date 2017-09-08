@@ -1,0 +1,14 @@
+doc-warnings: false
+test-warnings: true
+strictness: veryhigh
+max-line-length: 120
+uses:
+  - flask
+autodetect: true
+ignore-paths:
+  - postman
+  - lib
+  - hwa/data
+  - hwa/docker_hwa
+python-targets:
+  - 3

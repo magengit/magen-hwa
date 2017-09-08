@@ -1,6 +1,9 @@
 # Magen Asset Repository Service ("Hellow, World Application")
 
 [![Build Status](https://travis-ci.org/magengit/magen-hwa.svg?branch=master)](https://travis-ci.org/magengit/magen-hwa)
+[![codecov](https://codecov.io/gh/magengit/magen-hwa/branch/master/graph/badge.svg)](https://codecov.io/gh/magengit/magen-hwa)
+[![Code Health](https://landscape.io/github/magengit/magen-hwa/master/landscape.svg?style=flat)](https://landscape.io/github/magengit/magen-hwa/master)
+
 
 Magen HWA is a web server app that demonstrates the capabilities and interoperation of the various Magen services. The "onenode" orchestrator included in the distribution can be used to stand up HWA, the four Magen services, and a mongod instance as 6 cooperating containers. The user can first use the HWA web interface to "log in", with the operation handled through the Magen ID Service. The user can then use HWA to ingest files, with the operation handled through the Magen ID Service and with the ingested asset encrypted using a key provided by the Magen Key Service. The user can then use HWA to try to access (view or download) a previously ingested file, with the access attempt evaluated by the Magen Policy Service. Finally, HWA provides detailed documentation through the web interface.
 

@@ -12,25 +12,21 @@ The application, through a browser interface, maintains a toy repository
 on the filesystem of its local Linux instance.
 """
 
-import string
 import argparse
 import io
+import os
 import sys
 import logging
 import pkg_resources
-import random
-import socket
 import ssl
 import time
-from datetime import datetime, timedelta
-from uuid import *
+from datetime import timedelta
+# from uuid import *
 from http import HTTPStatus
 import base64
 import json
 from bs4 import BeautifulSoup
-import ast
 
-from bson.json_util import dumps
 import werkzeug
 import flask
 from flask import request, session, Blueprint
@@ -102,7 +98,6 @@ def hwa_ids_init():
       - callback_url pre-configured into id, exactly matching value set here
     """
     hwa_urls = HwaUrls()
-    server_urls = ServerUrls.get_instance()
 
     hwa_urls.ids_clt_oauth_callback_url_path = HWA_IDS_CLT_OAUTH_CALLBACK_URL_PATH
     hwa_ids_clt.issuer = hwa_urls.ids_issuer
@@ -121,7 +116,7 @@ def hwa_ids_init():
             hwa_urls.idsclt_secret_file,
             "Present" if hwa_ids_clt.client_id else "Missing",
             "Present" if hwa_ids_clt.client_secret else "Missing")
-        assert id_auth_clt.client_id and id_auth_clt.client_secret, "id auth client config file (" + hwa_urls.idsclt_secret_file + ") contains invalid configuration"
+        assert hwa_ids_clt.client_id and hwa_ids_clt.client_secret, "id auth client config file (" + hwa_urls.idsclt_secret_file + ") contains invalid configuration"
 
     hwa_ids_clt.callback_uri = hwa_urls.ids_clt_oauth_callback_url
 
@@ -199,7 +194,7 @@ def hwa_ids_mid_token_get(request, return_url):
     authorize_result = hwa_ids_clt.authorize(
         username=login_username, access_token=dummy_access_token)
     hwa_ids_clt.issuer = hwa_urls.ids_issuer
-    logger.debug("Get MAGEN_ID_TOKEN by authenticating with MID service, authenticate user:%s, callback_url:%s, authorize_result:%s, return_url:%s, session:%s",
+    logger.debug("Get MAGEN_ID_TOKEN: authenticate with MID service, authenticate user:%s, callback_url:%s, authorize_result:%s, return_url:%s, session:%s",
                  login_username, hwa_ids_clt.callback_uri,
                  authorize_result, return_url, session)
     return None, authorize_result
@@ -277,7 +272,7 @@ def hwa_logging_level_set(level_str):
 # it to appear at all is enough progress.
 #
 def hwa_http_logging_set(log_dir, level):
-    if level == None:
+    if level is None:
         print("http logging:disabled")
         return
 
@@ -304,11 +299,11 @@ def hwa_file_ingestion_allowed(filename):
 # file_data: handle on new file contents
 # oauth_token: box token allowing upload
 # operation: {encrypt,decrypt,transparent}
-def hwa_file_upload(file, ftype):
+def hwa_file_upload(new_file, ftype):
     hwa_urls = HwaUrls()
     server_urls = ServerUrls.get_instance()
 
-    filename = werkzeug.secure_filename(file.filename)
+    filename = werkzeug.secure_filename(new_file.filename)
 
     ufn_pfx = ""
     ufn_sfx = hwa_urls.ingest_file_suffix
@@ -320,28 +315,28 @@ def hwa_file_upload(file, ftype):
     logger.debug("Filename:%s => Directory:%s", filename, upload_path)
     if ftype == 'encrypt':
 
-        """ CREATE byte array and seek to 0 """
+        # CREATE byte array and seek to 0
         #f = open(filename, "rb")
         b = io.BytesIO()
-        file.save(b)
+        new_file.save(b)
         #for chunk in iter(lambda: f.read(4096), b''):
         #    b.write(chunk)
         #    logger.debug("bytes written from file %d", written)
         b.seek(0)
 
-        """ SEND TO INGESTION SERVICE """
+        # SEND TO INGESTION SERVICE
         ingestion_url = server_urls.ingestion_server_upload_url
         files = {'file': (filename, b, {'Expires': '0'})}
         logger.debug("ingesting file to %s", ingestion_url)
 
-        """ RECEIVE BACK FROM INGESTION """
+        # RECEIVE BACK FROM INGESTION
         ingest_response = rq(method="POST", url=ingestion_url, files=files)
         logger.debug('content: ')
         logger.debug(ingest_response.content)
 
         post_resp_json_obj = json.loads(ingest_response.content.decode("utf-8"))
         response = post_resp_json_obj.get('response')
-        success = (response.get('success') == True) if response else False
+        success = (response.get('success') is True) if response else False
         if not success:
             logger.debug("upload failed: response:%s, success:%s",
                          response, response.get('success'))
@@ -363,7 +358,7 @@ def hwa_file_upload(file, ftype):
         response = dict(
             asset_uuid=asset_uuid)
     else:
-        file.save(upload_path)
+        new_file.save(upload_path)
         response = dict(
             asset_uuid="unknown")
     return True, filename, upload_filename, response
@@ -526,8 +521,8 @@ def hwa_repo(req_path):
     file_name = req_path + (ingest_file_suffix if req_path else "")
     session['file_name'] = file_name
 
-    for property in ['download', 'raw_view', 'raw_download', 'delete']:
-        session[property] = request.args.get(property) != None
+    for repo_op in ['download', 'raw_view', 'raw_download', 'delete']:
+        session[repo_op] = request.args.get(repo_op) is not None
 
 
     content_header = {
@@ -564,6 +559,7 @@ def hwa_repo(req_path):
     # these come on the viewer_call
     latitude = request.args.get('latitude', None)
     longitude = request.args.get('longitude', None)
+    logger.debug("latitude:%s, longitude:%s", latitude, longitude)
 
     file_name = session['file_name']
 
@@ -639,9 +635,9 @@ def hwa_repo(req_path):
 
     validation_url = (
         server_urls.policy_validate_asset_access_url.format(asset_uuid) +
-	              "?midToken=" + str(mid_token) +
-                      "&action=" + "open" +
-                      "&returnKey")
+        "?midToken=" + str(mid_token) +
+        "&action=" + "open" +
+        "&returnKey")
     logger.debug("policy validation:%s", validation_url)
     my_bool, flask_response, policy_request_response = do_rest_call(
         method="GET", url=validation_url, headers=content_header)
@@ -700,28 +696,28 @@ def ingest_file():
         if 'file' not in request.files:
             logger.error('No file key')
             return flask.redirect(request.url)
-        file = request.files['file']
-        if not file:
+        new_file = request.files['file']
+        if not new_file:
             logger.error('file error')
             msg = "Error: No file specified."
             return flask.render_template('status_msg.html', msg=msg)
-        elif not hwa_file_ingestion_allowed(file.filename):
+        elif not hwa_file_ingestion_allowed(new_file.filename):
             logger.error('file ingestion allowed error')
-            msg = "Upload not allowed for " + file.filename
+            msg = "Upload not allowed for " + new_file.filename
             return flask.render_template('status_msg.html', msg=msg)
 
         # if user does not select file, browser also
         # submit a empty part without filename
-        if file.filename == '':
+        if new_file.filename == '':
             logger.info('No selected file')
             return flask.redirect(request.url)
 
         ftype = 'encrypt'
 
         success, src_filename, upload_filename, response = hwa_file_upload(
-            file, ftype)
+            new_file, ftype)
         if not success:
-            msg = "Upload failed for " + file.filename
+            msg = "Upload failed for " + new_file.filename
             return flask.render_template('status_msg.html', msg=msg)
 
         asset_uuid = response.get("asset_uuid", "")

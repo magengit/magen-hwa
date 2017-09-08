@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 import sys
 import pip
 
@@ -7,7 +7,7 @@ if sys.version_info < (3, 5, 2):
 
 pip_version = int(pip.__version__.replace(".", ""))
 if pip_version < 901:
-        sys.exit("Sorry, you need pip 9.0.1+")
+    sys.exit("Sorry, you need pip 9.0.1+")
 
 setup(
     name='magen_hwa_service',

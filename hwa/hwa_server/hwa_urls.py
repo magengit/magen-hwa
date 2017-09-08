@@ -8,11 +8,9 @@ __status__ = "alpha"
 
 import logging
 import os.path
-import importlib.util
 import subprocess
-import socket
 
-from magen_logger.logger_config import LogDefaults, initialize_logger
+from magen_logger.logger_config import LogDefaults
 from magen_utils_apis.singleton_meta import Singleton
 from magen_rest_apis.server_urls import ServerUrls
 

@@ -6,38 +6,28 @@ __copyright__ = "Copyright(c) 2015, Cisco Systems, Inc."
 __version__ = "0.1"
 __status__ = "alpha"
 
-import argparse
-import io
-import sys
 import logging
-import random
-import socket
-import ssl
-import time
-from datetime import datetime, timedelta
-from uuid import *
-from http import HTTPStatus
-import json, base64, string, ast
+import ast
 
 import requests
 import requests.exceptions
 
 
-from magen_logger.logger_config import LogDefaults, initialize_logger
+from magen_logger.logger_config import LogDefaults
 
 logger = logging.getLogger(LogDefaults.default_log_name)
 
 
 # read config file - extract client id, client secret per web app
 # "viewer", "ingestion", "webhooks", ...
-def read_dict_from_file(filename):
+def read_dict_from_file(cfg_filename):
     s = ""
     try:
-        with open(filename, "r") as file:
-            s = file.read()
+        with open(cfg_filename, "r") as cfg_file:
+            s = cfg_file.read()
     except IOError:
         # caller should log a higher-severity message if appropriate
-        logger.debug("Error reading file: %s", filename)
+        logger.debug("Error reading file: %s", cfg_filename)
         return {}
 
     config = ast.literal_eval(s)
@@ -53,7 +43,7 @@ def do_rest_call(method, url, data=None, auth=None, verify=False, headers=None, 
      otherwise False with error string
     """
     try:
-        logger.debug("{}ing {}".format(method,url))
+        logger.debug("%sing %s", method,url)
         response = requests.request(method=method,
                                     url=url,
                                     data=data,
@@ -67,16 +57,16 @@ def do_rest_call(method, url, data=None, auth=None, verify=False, headers=None, 
         logger.debug("response: text=%s code=%s headers.items=%s", response.text, response.status_code, response.headers.items())
         return True, (response.text, response.status_code, response.headers.items()), response
 
+    except (requests.exceptions.ConnectTimeout, requests.exceptions.ReadTimeout) as exc:
+        logger.error(
+            'Failed to %s configuration. Server too slow. Error: %s', method, exc)
+        return False, "Server too slow", None
     except (requests.exceptions.ConnectionError,
             requests.exceptions.RequestException) as exc:
         logger.error(
             'Failed to %s configuration. Server might not be running. Error: %s',
             method, exc)
         return False, "Server might not be running", None
-    except (requests.exceptions.ConnectTimeout, requests.exceptions.ReadTimeout) as exc:
-        logger.error(
-            'Failed to %s configuration. Server too slow. Error: %s', method, exc)
-        return False, "Server too slow", None
 
 #
 # string generator that gives more flexibility than templates

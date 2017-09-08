@@ -5,7 +5,7 @@ import logging
 
 from datadog.api.exceptions import ApiNotInitialized
 
-from magen_logger.logger_config import LogDefaults, initialize_logger
+from magen_logger.logger_config import LogDefaults
 from magen_utils_apis.dd_events_wrapper import DDEventsWrapper
 
 from hwa.hwa_server.hwa_utils import read_dict_from_file

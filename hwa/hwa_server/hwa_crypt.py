@@ -4,7 +4,8 @@
 # Copyright (c) 2015 Cisco Systems, Inc. and others.  All rights reserved.
 #
 
-import os, random, struct, hashlib, io, sys
+import struct
+import io
 from Crypto.Cipher import AES
 
 __author__ = "paulq@cisco.com"
@@ -35,7 +36,7 @@ def decrypt_stream(key, in_stream, chunksize=24*1024):
 
     while True:
         chunk = in_stream.read(chunksize)
-        if len(chunk) == 0:
+        if not chunk:
             break
         out_stream.write(decryptor.decrypt(chunk))
         print("chunk=", chunk, "\n")

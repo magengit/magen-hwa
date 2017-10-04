@@ -1,4 +1,4 @@
-# Magen Asset Repository Service ("Hellow, World Application")
+# Magen Asset Repository Service ("Hello World Application")
 
 [![Build Status](https://travis-ci.org/magengit/magen-hwa.svg?branch=master)](https://travis-ci.org/magengit/magen-hwa)
 [![codecov](https://codecov.io/gh/magengit/magen-hwa/branch/master/graph/badge.svg)](https://codecov.io/gh/magengit/magen-hwa)

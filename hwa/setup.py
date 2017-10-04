@@ -29,7 +29,7 @@ setup(
         'magen_id_client==1.0a1',
         'magen_logger==1.0a1',
         'magen_mongo==1.0a1',
-        'magen_rest_service==1.0a1',
+        'magen_rest_service==1.2a1',
         'magen_statistics_service==1.0a1',
         'magen_test_utils==1.0a1',
         'magen_utils==1.0a1'

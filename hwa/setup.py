@@ -27,12 +27,12 @@ setup(
         'Sphinx>=1.6.3',
         'wheel>=0.30.0a0',
         'magen_id_client==1.0a1',
-        'magen_logger==1.0a1',
-        'magen_mongo==1.0a1',
-        'magen_rest_service==1.2a1',
-        'magen_statistics_service==1.0a1',
+        'magen_logger>=1.0a1',
+        'magen_utils>=1.2a2',
         'magen_test_utils==1.0a1',
-        'magen_utils==1.0a1'
+        'magen_mongo>=1.0a1',
+        'magen_rest_service>=1.2a2',
+        'magen_statistics_service>=1.1a1'
       ],
     scripts=['hwa_server/hwa_server.py',
              '../lib/magen_helper/helper_scripts/magen_svc_cfgfile_gen.sh'],

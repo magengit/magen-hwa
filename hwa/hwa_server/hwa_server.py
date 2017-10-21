@@ -16,6 +16,7 @@ import string
 import argparse
 import io
 import sys
+import os
 import logging
 import pkg_resources
 import random
@@ -23,14 +24,12 @@ import socket
 import ssl
 import time
 from datetime import datetime, timedelta
-from uuid import *
 from http import HTTPStatus
 import base64
 import json
 from bs4 import BeautifulSoup
 import ast
 
-from bson.json_util import dumps
 import werkzeug
 import flask
 from flask import request, session, Blueprint
@@ -87,7 +86,7 @@ hwa_ids_clt = magen_client.register_client_app('magen_hw_agent')
 
 def hwa_ids_is_initialized():
     return hwa_ids_clt.client_id and hwa_ids_clt.client_secret
-    
+
 def hwa_ids_init():
     """
     Initialize hwa_ids_clt at boot time
@@ -121,7 +120,7 @@ def hwa_ids_init():
             hwa_urls.idsclt_secret_file,
             "Present" if hwa_ids_clt.client_id else "Missing",
             "Present" if hwa_ids_clt.client_secret else "Missing")
-        assert id_auth_clt.client_id and id_auth_clt.client_secret, "id auth client config file (" + hwa_urls.idsclt_secret_file + ") contains invalid configuration"
+        assert hwa_ids_clt.client_id and hwa_ids_clt.client_secret, "id auth client config file (" + hwa_urls.idsclt_secret_file + ") contains invalid configuration"
 
     hwa_ids_clt.callback_uri = hwa_urls.ids_clt_oauth_callback_url
 
@@ -154,7 +153,7 @@ def hwa_ids_mid_token_get(request, return_url):
         " BUT EXPIRED" if midtoken_expired else "")
     if midtoken_valid:
         return session['magen_id_token'], None
-    
+
     # Currently, require user to click on login rather than also allowing
     # login as a side effect of other operations
     if (return_url.find('login') == -1 or
@@ -165,6 +164,7 @@ def hwa_ids_mid_token_get(request, return_url):
         msg = "Login required to use service."
         return None, flask.render_template('status_msg.html', msg=msg)
 
+    # Unittest bypass
     if not hwa_urls.production_mode and not midtoken_valid:
         midtoken_valid = True
         magen_id_token = "1234567890"
@@ -193,16 +193,17 @@ def hwa_ids_mid_token_get(request, return_url):
     #   - most complicated case is access between two dockers, e.g.
     #     e.g. https://magen_id_service:5030
     # id client library does not currently support both these, so temporarily
-    # install redirect issue latter around this call to generate a redirect. 
+    # install redirect issue latter around this call to generate a redirect.
     assert hwa_ids_clt.issuer == hwa_urls.ids_issuer
     hwa_ids_clt.issuer = hwa_urls.ids_redirect_issuer
-    authorize_result = hwa_ids_clt.authorize(
+    authorize_response = hwa_ids_clt.authorize(
         username=login_username, access_token=dummy_access_token)
+
     hwa_ids_clt.issuer = hwa_urls.ids_issuer
     logger.debug("Get MAGEN_ID_TOKEN by authenticating with MID service, authenticate user:%s, callback_url:%s, authorize_result:%s, return_url:%s, session:%s",
                  login_username, hwa_ids_clt.callback_uri,
-                 authorize_result, return_url, session)
-    return None, authorize_result
+                 authorize_response.json_body, return_url, session)
+    return None, authorize_response
 
 def hwa_ids_mid_token_validate(mid_token):
     hwa_urls = HwaUrls()
@@ -381,9 +382,9 @@ def hw_request_context_update(request, request_url=None):
     # If not valid, authenticate with Magen ID Svc to get or refresh MID token
     if not request_url:
         request_url = request.path
-    mid_token, ids_auth_url = hwa_ids_mid_token_get(request, request_url)
+    mid_token, ids_auth_resp = hwa_ids_mid_token_get(request, request_url)
     if not mid_token:
-        html_result = ids_auth_url
+        html_result = ids_auth_resp.json_body
         # RETURN REDIRECT TO ID SVC: END OF THIS PASS THROUGH ROUTINE
         return success_result, html_result, mid_token_result
 
@@ -391,7 +392,7 @@ def hw_request_context_update(request, request_url=None):
     assert mid_token_result,  "magen_id_token update error"
     success_result = True
     return success_result, html_result, mid_token_result
-    
+
 #
 # Health check, e.g. for AWS load balancer
 #
@@ -471,7 +472,7 @@ def hwa_ids_authorization(resp):
 
     magen_id_token=resp['magen_id_token'].strip()
     session['magen_id_token'] = magen_id_token
-    user_client_info_json = hwa_ids_mid_token_validate(magen_id_token)
+    user_client_info_json = hwa_ids_mid_token_validate(magen_id_token).json_body
 
     # calculate refresh time for future check and save in the session
     expires = resp.get('expires_in')
@@ -544,7 +545,9 @@ def hwa_repo(req_path):
             HTTPStatus.INTERNAL_SERVER_ERROR,
             "errors", 'Missing login_username and/or host_url')
 
-    user_client_info_json = hwa_ids_mid_token_validate(mid_token)
+    user_client_info_resp = hwa_ids_mid_token_validate(mid_token)
+    assert user_client_info_resp.http_status, HTTPStatus.OK
+    user_client_info_json = user_client_info_resp.json_body
     logger.debug("MID user client info: %s", user_client_info_json)
 
     mc_id = user_client_info_json.get("mc_id", "")
@@ -848,7 +851,7 @@ def main():
 
     # Initialize event service client relationship
     HwaEventSvcInitialize()
-    
+
     hwa_ids_init()
 
     if hwa_urls.hwa_url_scheme == "https" and hwa_urls.production_mode:

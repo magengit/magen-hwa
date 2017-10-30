@@ -353,6 +353,7 @@ onenode_install()
 	    wrapper_dockerfile local $tag $version > $magen_data/$module/Dockerfile
 	done
 
+    # FIXME: building from source
 	# clone/build source
 	echo "$progname: Cloning source for magen services under $magen_source"
 	mkdir $magen_source

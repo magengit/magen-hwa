@@ -1,0 +1,88 @@
+# Download all service docker images (plus mongo docker image) and run
+version: "2"
+
+networks:
+  default:
+    external:
+      name: magen_onenode_net
+
+services:
+  magen_mongo:
+    image: mongo:latest
+    container_name: magen_mongo
+    networks:
+      - default
+  magen_id_service:
+#    build: magen_data/id
+    image: magen_id:v1.0
+    container_name: magen_id_service
+    command: bash -c 'id_server.py --data-dir /opt/svc/data --console-log-level info --log-dir /opt/svc/id_logs >> /opt/svc/id.log 2>&1'
+    environment:
+      - DATADOG_API_KEY
+      - DATADOG_APP_KEY
+    ports:
+      - "5030:5030"
+    volumes:
+      - ~/magen_onenode/magen_data/id/:/opt/svc/
+    stdin_open: true
+    tty: true
+    networks:
+      - default
+  magen_ks:
+#    build: magen_data/ks
+    image: magen_ks:v1.3
+    container_name: magen_ks
+    command: bash -c "ks_server.py --data-dir /opt/svc/data --console-log-level info --log-dir /opt/svc/key_server_logs >> /opt/svc/ks_server.log 2>&1"
+    ports:
+      - "5010:5010"
+    volumes:
+      - ~/magen_onenode/magen_data/ks/:/opt/svc/
+    stdin_open: true
+    tty: true
+    networks:
+      - default
+  magen_ingestion:
+#    build: magen_data/ingestion
+    image: magen_ingestion:v1.0
+    container_name: magen_ingestion
+    command: bash -c "ingestion_server.py --data-dir /opt/svc/data --console-log-level info --log-dir /opt/svc/ingestion_logs >> /opt/svc/ingestion_server.log 2>&1"
+    ports:
+      - "5020:5020"
+    volumes:
+      - ~/magen_onenode/magen_data/ingestion/:/opt/svc/
+    stdin_open: true
+    tty: true
+    networks:
+      - default
+  magen_policy:
+#    build: magen_data/ps
+    image: magen_policy:v1.0
+    container_name: magen_policy
+    command: bash -c '(policy_server_wrapper.sh -mode operational --data-dir /opt/svc/data --log-dir /opt/svc) >> /opt/svc/policy.log 2>&1'
+    environment:
+      - DATADOG_API_KEY
+      - DATADOG_APP_KEY
+    ports:
+      - "5000:5000"
+      - "5003:5003"
+    links:
+      - magen_mongo
+    depends_on:
+      - magen_mongo
+    volumes:
+      - ~/magen_onenode/magen_data/ps/:/opt/svc/
+    stdin_open: true
+    tty: true
+  magen_hwa:
+#    build: magen_data/hwa
+    image: magen_hwa:v1.0
+    container_name: magen_hwa
+    command: bash -c "hwa_server.py --data-dir /opt/svc/data --console-log-level debug --log-dir /opt/svc/hwa_logs >> /opt/svc/hwa_server.log 2>&1"
+    ports:
+      - "5002:5002"
+    volumes:
+      - ~/magen_onenode/magen_data/hwa/:/opt/svc/
+    stdin_open: true
+    tty: true
+    networks:
+      - default

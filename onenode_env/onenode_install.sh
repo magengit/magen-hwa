@@ -199,12 +199,9 @@ onenode_install_usage()
 {
     cat <<ONENODE_INSTALL_USAGE
 Usage:
-    $prog_base $prog_opcode --build-from { dockerimage | source } [--dev-keys] [-host <host>]
-        --build-from: start with docker images (from image repo) or source
-                      from git repo)
-        --dev-keys:   for "--build-from source" case, for git clone, use
-                      development keys
-                      (default: deploy keys)
+    $prog_base $prog_opcode --build-from { dockerimage | source | source_latest } [-host <host>]
+        --build-from: start with docker images (from image repo), source
+                      from git tagged repo) or source_latest
         --host:       specify global ip name or address to allow remote
                       browsing of hwa app
                       (default:localhost, allowing only local browsing)
@@ -217,6 +214,8 @@ Description:
 Examples:
          bash$ $prog_base $prog_opcode --build-from dockerimage
          bash$ $prog_base $prog_opcode --build-from dockerimage --host <hostname>
+         bash$ $prog_base $prog_opcode --build-from source
+         bash$ $prog_base $prog_opcode --build-from source_latest
 
 ONENODE_INSTALL_USAGE
 
@@ -225,7 +224,7 @@ ONENODE_INSTALL_USAGE
 
 onenode_install()
 {
-    gitkeys=deploy
+#    gitkeys=deploy
     host=
     id_client_id=$(random_string 32)
     id_client_secret=$(random_string 32)
@@ -235,20 +234,17 @@ onenode_install()
     while [ $# != 0 ] ; do
 	case $1 in
 	-help)
-            ${progname}_usage 0
+      ${progname}_usage 0
 	    ;;
-        --build-from)
-            opt_arg_reqd_no_override "$buildfrom" $*
-            shift
-            buildfrom=$1
-	    ;;
-        --dev-keys)
-	    gitkeys=dev
+  --build-from)
+      opt_arg_reqd_no_override "$buildfrom" $*
+      shift
+      buildfrom=$1
 	    ;;
 	--host)
-            opt_arg_reqd_no_override "$host" $*
-            shift
-            host=$1
+      opt_arg_reqd_no_override "$host" $*
+      shift
+      host=$1
 	    ;;
 	-*)
 	    echo "$progname: ERROR: unrecognized option $1" >&2
@@ -262,7 +258,7 @@ onenode_install()
     done
 
     case $buildfrom in
-    source|dockerimage)
+    source|source_latest|dockerimage)
         # legal choices
 	;;
     "")
@@ -290,9 +286,9 @@ onenode_install()
     echo "$progname: Creating sandbox director skeleton"
     cp -p onenode_install.sh $magen_root/onenode.sh
 
-    dc_file=docker-compose-runall.yml
-    cp -p magen_cfgfile.templates/${dc_file}-dist $magen_root/$dc_file
-
+    dc_file=docker-compose-runall
+    cp -p magen_cfgfile.templates/${dc_file}.yml-dist $magen_root/$dc_file.yml
+    cp -p magen_cfgfile.templates/${dc_file}-source.yml $magen_root
     tar -c \
         --exclude onenode_install.sh \
         --exclude magen_cfgfile.templates \
@@ -341,66 +337,10 @@ onenode_install()
 	done
 	;;
     source)
-	build_list=${repo_list[@]}
-	echo "$progname: Creating Dockerfiles to use magen service docker images build locally from source"
-	for module in ${usvc_list[@]}; do
-	    tag=magen-$module
-	    if [ $module = "ks" ]; then
-		version=v1.3
-	    else
-		version=v1.0
-	    fi
-	    wrapper_dockerfile local $tag $version > $magen_data/$module/Dockerfile
-	done
-
-    # FIXME: building from source
-	# clone/build source
-	echo "$progname: Cloning source for magen services under $magen_source"
-	mkdir $magen_source
-	for module in ${build_list[@]}; do
-	    repo=magen-$module
-	    if [ $module = "id" ]; then
-		repo=${repo}-open-source
-	    fi
-	    case $gitkeys in
-	    deploy)
-	        gitrepohost=$repo.github.com
-		;;
-	     dev)
-	        gitrepohost=github.com
-		;;
-	    esac
-	    repo_path=git@$gitrepohost:Cisco-Magen/$repo.git
-	    (cd $magen_source; git clone $repo_path)
-	done
-	echo "$progname: Building images (\"make build_docker\") from local repos"
-	for module in ${build_list[@]}; do
-	    repo=magen-$module
-	    if [ $module = "id" ]; then
-		repo=${repo}-open-source
-	    fi
-	    case $module in
-	    core)
-		subdir=.
-		;;
-	    ps)
-		subdir=policy
-		;;
-	    *)
-		subdir=$module
-		;;
-	    esac
-	    case $module in
-	    core)
-		target=build_base_docker
-		;;
-	    *)
-		target=build_docker
-		;;
-	    esac
-	    (cd $magen_source/$repo/$subdir ; make $target)
-	done
+    bash build_from_source.sh
         ;;
+    source_latest)
+    bash build_from_source.sh --latest
     esac
     cat <<INSTALL_COMPLETE
 $progname: Install step complete ($magen_root_printable created).
@@ -528,6 +468,10 @@ onenode_start()
 	shift
     done
 
+    if [ -d ${magen_source} ]; then
+        docker-compose up -f docker-compose-runall-source.yml up -d
+        exit 1
+    fi
 
     cd $magen_root
     echo "$progname: Starting docker containers for magen services"

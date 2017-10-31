@@ -9,7 +9,12 @@ Magen HWA is a web server app that demonstrates the capabilities and interoperat
 
 Policies are managed (e.g. created) through the Magen Policy Service ReST API, driven e.g. from Postman using the magen-policy-specific Postman collections included in the distribution. Without creating an appropriate policy, attempts to access ingestion assets will fail.
 
-Current version: ```1.0a2```
+Current version: ```1.0a3```
+
+## Demo
+To set up the demo "Hello, World" App, please see [**Readme**](onenode_env/README.me).
+
+## HWA Details
 
 For This Service there are available ```make``` commands. Makefile is located under [**hwa/**](hwa)
 
@@ -58,9 +63,3 @@ default:
 
 1. ```make all```  -> Install *Magen-Core* dependencies, clean, package and install **hwa** package
 2. ```make test``` -> run **hwa** tests
-
-## Adopt this Infrastructure
-
-1. get [**helper_scripts**](hwa/helper_scripts) to the repo
-2. follow the structure in [**docker_hwa**](hwa/docker_hwa) to create ```docker-compose.yml``` and ```Dockerfile``` files
-3. use [**Makefile**](hwa/Makefile) as an example for building make automation

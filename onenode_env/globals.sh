@@ -11,7 +11,7 @@ MAGENGIT=https://github.com/magengit  # magengit user address
 
 REPOS=(magen-core magen-ps magen-id magen-ks magen-in magen-hwa)
 NUM_OF_SERVICES=6
-ONENODE_GIT_TAG=v1.0
+ONENODE_GIT_TAG=v1.0  # git tag for stable onenode version
 
 export MAGEN_DOCKERHUB
 export MAGEN_ROOT
@@ -51,12 +51,18 @@ loader(){
 
 checkout_git(){
 caller_name=$1
+no_tags=$2
 rm -rf mkdir ${MAGEN_SOURCE}
 mkdir ${MAGEN_SOURCE}
+if [ "$no_tags" = true ]; then
+  tag=''
+else
+  tag="-b ${ONENODE_GIT_TAG}"
+fi
 for module in "${REPOS[@]}"; do
     echo
     beautiful_echo ${yellow} ${caller_name} "Checking out ${MAGENGIT}/${module}"
-    git clone -q ${MAGENGIT}/${module} ${MAGEN_SOURCE}/${module} &
+    git clone -q ${tag} ${MAGENGIT}/${module} ${MAGEN_SOURCE}/${module} &
     loader $!
 done
 }

@@ -1,6 +1,7 @@
 PACKAGE_TAG = hwa
 PACKAGE_NAME = magen_$(PACKAGE_TAG)_service
-WHEEL := $(PACKAGE_NAME)-1.0a2-py3-none-any.whl
+wheel_version := $(shell python3 -c 'import __init__ as version; print(version.__version__)')
+WHEEL := $(PACKAGE_NAME)-$(wheel_version)-py3-none-any.whl
 DOCKER_IMAGE=magen-hwa
 DOCKER_SRC_TAG=magen_hwa:v1.0
 DOCKER_DIR=docker_$(PACKAGE_TAG)

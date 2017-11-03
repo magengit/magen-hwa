@@ -469,7 +469,7 @@ onenode_start()
     done
 
     if [ -d ${magen_source} ]; then
-        docker-compose up -f docker-compose-runall-source.yml up -d
+        docker-compose -f docker-compose-runall-source.yml up -d
         exit 1
     fi
 

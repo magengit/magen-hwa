@@ -1,6 +1,12 @@
-from setuptools import setup, find_packages
+# coding=utf-8
+"""Set up wheel for Magen Hello World App"""
+from setuptools import setup
 import sys
+import os
 import pip
+
+with open(os.path.join(os.path.dirname(__file__), '__init__.py')) as version_file:
+    exec(version_file.read())
 
 if sys.version_info < (3, 5, 2):
     sys.exit("Sorry, you need Python 3.5.2+")
@@ -11,7 +17,7 @@ if pip_version < 901:
 
 setup(
     name='magen_hwa_service',
-    version='1.0a3',
+    version=__version__,
     install_requires=[
         'aniso8601>=1.2.1',
         'bs4>=0.0.1',
@@ -26,7 +32,7 @@ setup(
         'responses>=0.5.1',
         'Sphinx>=1.6.3',
         'wheel>=0.30.0a0',
-        'magen_id_client==2.0a0',
+        'magen_id_client==2.1a0',
         'magen_logger>=1.0a1',
         'magen_utils>=1.2a2',
         'magen_test_utils==1.0a1',

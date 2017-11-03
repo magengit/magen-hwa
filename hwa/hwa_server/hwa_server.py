@@ -201,8 +201,7 @@ def hwa_ids_mid_token_get(request, return_url):
 
     hwa_ids_clt.issuer = hwa_urls.ids_issuer
     logger.debug("Get MAGEN_ID_TOKEN by authenticating with MID service, authenticate user:%s, callback_url:%s, authorize_result:%s, return_url:%s, session:%s",
-                 login_username, hwa_ids_clt.callback_uri,
-                 authorize_response.json_body, return_url, session)
+                 login_username, hwa_ids_clt.callback_uri, return_url, session)
     return None, authorize_response
 
 def hwa_ids_mid_token_validate(mid_token):
@@ -461,6 +460,7 @@ HWA_IDS_CLT_OAUTH_CALLBACK_URL_PATH = '/oauth/callback/'
 @hwa_url_bp.route(HWA_IDS_CLT_OAUTH_CALLBACK_URL_PATH, methods=["GET"])
 @hwa_ids_clt.authorized_handler
 def hwa_ids_authorization(resp):
+    resp = resp.json_body
     logger.debug(
         "hwa oauth callback (from id svc): resp:%s, url:%s, session:%s",
         resp, request.host_url, session)

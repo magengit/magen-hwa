@@ -382,9 +382,9 @@ def hw_request_context_update(request, request_url=None):
     # If not valid, authenticate with Magen ID Svc to get or refresh MID token
     if not request_url:
         request_url = request.path
-    mid_token, ids_auth_resp = hwa_ids_mid_token_get(request, request_url)
+    mid_token, ids_auth_url = hwa_ids_mid_token_get(request, request_url)
     if not mid_token:
-        html_result = ids_auth_resp.json_body
+        html_result = ids_auth_url
         # RETURN REDIRECT TO ID SVC: END OF THIS PASS THROUGH ROUTINE
         return success_result, html_result, mid_token_result
 

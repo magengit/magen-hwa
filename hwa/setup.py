@@ -11,7 +11,7 @@ if pip_version < 901:
 
 setup(
     name='magen_hwa_service',
-    version='1.0a2',
+    version='1.0a3',
     install_requires=[
         'aniso8601>=1.2.1',
         'bs4>=0.0.1',

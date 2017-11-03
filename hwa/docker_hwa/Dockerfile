@@ -18,7 +18,7 @@ RUN rm -rf tests/__pycache__/
 
 # For dev:
 WORKDIR /tmp
-COPY magen_hwa_service-1.0a2-py3-none-any.whl /tmp
-RUN pip3 install magen_hwa_service-1.0a2-py3-none-any.whl
+COPY magen*.whl /tmp
+RUN pip3 install magen*.whl
 
 WORKDIR /opt/server/hwa

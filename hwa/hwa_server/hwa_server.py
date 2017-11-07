@@ -675,7 +675,9 @@ def hwa_repo(req_path):
         return flask.render_template('status_msg.html', msg=msg)
 
     key_b64 = policy_response.get('key').get('key')
-    key = base64.b64decode(key_b64)
+    # key = base64.b64decode(key_b64)
+    # No need to decode anymore.
+    key = key_b64
 
     in_stream = io.BytesIO()
     in_stream.write(asset_enc)

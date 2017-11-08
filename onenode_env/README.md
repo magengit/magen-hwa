@@ -24,7 +24,7 @@ bash$ git clone https://github.com/magengit/magen-hwa.git
 ```cd``` to ```onenode_env``` directory. Command ```./onenode_install.sh install``` will display a usage of the script. Execute:
 
 ```
-bash$ ./onenode_install.sh install --build-from {dockerimage|source}
+bash$ ./onenode_install.sh install --build-from {dockerimage|source|source_latest}
 ```
 
 You can choose to build demo from ```dockerimage``` (will pull from dockerhub) or ```source``` (will clone git repos and build images locally).

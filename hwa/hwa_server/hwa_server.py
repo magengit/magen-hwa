@@ -19,8 +19,6 @@ import sys
 import os
 import logging
 import pkg_resources
-import random
-import socket
 import ssl
 import time
 from datetime import datetime, timedelta
@@ -28,7 +26,6 @@ from http import HTTPStatus
 import base64
 import json
 from bs4 import BeautifulSoup
-import ast
 
 import werkzeug
 import flask
@@ -632,6 +629,12 @@ def hwa_repo(req_path):
     asset_b64 = asset_tag_src.split("base64,", 1)[1]
     asset_enc = base64.b64decode(asset_b64)
 
+    iv_element = html_soup.find("p", attrs={"data-initialization-vector": True})
+    iv = iv_element.get_text()
+
+    file_size_elem = html_soup.find("p", attrs={"data-file-size": True})
+    file_size = int(file_size_elem.get_text())
+
     event_kwgs = dict(
         action="file.open",
         application=hwa_urls.hwa_app_tag,
@@ -683,7 +686,7 @@ def hwa_repo(req_path):
     in_stream.write(asset_enc)
     in_stream.seek(0, 0)
 
-    out_stream = decrypt_stream(key=key, in_stream=in_stream)
+    out_stream = decrypt_stream(key, iv, file_size, in_stream=in_stream)
     out_stream.seek(0,0)
 
     HwaEventsSendEvt(event_name='HW File View', alert='success',

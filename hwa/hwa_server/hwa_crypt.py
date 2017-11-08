@@ -13,7 +13,7 @@ __version__ = "0.1"
 __status__ = "alpha"
 
 
-def decrypt_stream(key, in_stream, chunksize=24*1024):
+def decrypt_stream(key, iv, file_size, in_stream, chunksize=24*1024):
 
     """
     Decrypts a byte stream using AES (CBC mode) with the given key.
@@ -27,11 +27,11 @@ def decrypt_stream(key, in_stream, chunksize=24*1024):
 
     out_stream = io.BytesIO()
 
-    origsize = struct.unpack('<Q', in_stream.read(struct.calcsize('Q')))[0]
-    iv = in_stream.read(16)
-    decryptor = AES.new(key, AES.MODE_CBC, iv)
+    # origsize = struct.unpack('<Q', in_stream.read(struct.calcsize('Q')))[0]
+    # iv = in_stream.read(16)
+    decryptor = AES.new(key.encode("utf-8"), AES.MODE_CBC, iv.encode("utf-8"))
 
-    print("filesize=", origsize, " iv=", iv, "\n")
+    # print("filesize=", origsize, " iv=", iv, "\n")
 
     while True:
         chunk = in_stream.read(chunksize)
@@ -40,5 +40,5 @@ def decrypt_stream(key, in_stream, chunksize=24*1024):
         out_stream.write(decryptor.decrypt(chunk))
         print("chunk=", chunk, "\n")
 
-    out_stream.truncate(origsize)
+    out_stream.truncate(file_size)
     return out_stream

@@ -9,7 +9,7 @@ The setup consists of 6 containers running on a single *nix instance.
    2. key service
    3. ingestion service
    4. policy service
-   1. mongo container shared by [A]
+   1. mongo container shared by first 4 services
    4. "Hello, World!" app to demonstrate how the core services work
    together.
 
@@ -27,10 +27,9 @@ bash$ git clone https://github.com/magengit/magen-hwa.git
 bash$ ./onenode_install.sh install --build-from {dockerimage|source|source_latest}
 ```
 
-You can choose to build demo from ```dockerimage``` (will pull from dockerhub), ```source``` (will clone git tagged repos and build images locally) or
-```source_latest``` (will pull latest code base)
+You can choose to build demo from ```dockerimage``` (will pull from dockerhub) and  ```source``` or ```source_latest``` (will clone git repos and build images locally).
 
-By default when building from ```source``` a stable tags (v1.0) are used, but you can specify 'latest' option to ```onenode_install.sh``` script in order to build from latest source.
+When building from ```source``` a stable tags (v1.0) are used. By using ```source_latest``` option to ```onenode_install.sh``` script in order to build from latest source.
 ###### Note, that the demo is stable with tagged src and might not run correctly with latest code as we're under active development and changes of API.
 
 After build is done follow the instructions of the output.

@@ -5,6 +5,9 @@ set -u
 # ONENODE CONFIG VALUES: BEGIN
 #--------------------------------------------------------------------------
 
+# Before start making sure some required paths exist
+mkdir -p ~/magen_data/
+
 docker_registry=magendocker
 
 magen_root=~/magen_onenode
@@ -12,6 +15,9 @@ magen_root_printable="~/magen_onenode"
 magen_data=$magen_root/magen_data
 magen_source=$magen_root/magen_source
 onenode_scripts=$magen_root/onenode_scripts
+
+# Docker specifics
+docker_network=magen_onenode_net
 
 #--------------------------------------------------------------------------
 # ONENODE UTILITY FUNCTIONS: BEGIN
@@ -343,8 +349,8 @@ onenode_install()
     bash build_from_source.sh --latest
     esac
     cat <<INSTALL_COMPLETE
-$progname: Install step complete ($magen_root_printable created).
-$progname: NEXT STEP: "bash$ $magen_root_printable/onenode.sh start".
+${progname}: Install step complete (${magen_root_printable} created).
+${progname}: NEXT STEP: "bash$ ${magen_root_printable}/onenode.sh start".
 INSTALL_COMPLETE
 }
 
@@ -358,12 +364,12 @@ Usage: $prog_base $prog_opcode
 
 Description:
     Uninstall directory tree for one-node magen_instance.
-    (Delete directory tree under $magen_root)
-    Prior to that, shut down instance ($prog_location stop).
-    [Opposite operation: "$pkg install"]
+    (Delete directory tree under ${magen_root})
+    Prior to that, shut down instance (${prog_location} stop).
+    [Opposite operation: "${pkg} install"]
 
 Example:
-         bash$ $magen_root_printable/$prog_base $prog_opcode
+         bash$ ${magen_root_printable}/${prog_base} ${prog_opcode}
 
 ONENODE_UNINSTALL_USAGE
 
@@ -388,28 +394,28 @@ onenode_uninstall()
 	shift
     done
 
-    if [ ! -d $magen_data ]; then
-	echo "$progname: $magen_data does not exist. No cleanup required"
+    if [ ! -d ${magen_data} ]; then
+	echo "${progname}: ${magen_data} does not exist. No cleanup required"
 	exit 0
     fi
 
-    if [ -f $onenode_scripts/docker_clean.sh ]; then
+    if [ -f ${onenode_scripts}/docker_clean.sh ]; then
 	# only try shutdown if tools are still present
-	$prog_location stop
+	${prog_location} stop
     else
 	echo "$progname: $magen_root tree incomplete. Skipping \"$prog_location stop\": "
     fi
     echo "$progname: removing onenode docker images and network (but not dependent docker images)"
-    $onenode_scripts/docker_images_remove_matching.sh -images onenode -net magen_onenode_net
+    ${onenode_scripts}/docker_images_remove_matching.sh -images onenode -net magen_onenode_net
 
     echo "$progname: removing $magen_root_printable"
     if [ "$EUID" != 0 ]; then
 	cat <<EUID_WARNING
-$progname:     [WARNING: current_euid=$EUID (non-root).
-$progname:      1. Any permission errors from removal may indicate need
-$progname:         to run $progname as root.
-$progname:      2. If no permission errors are reported, running $progname
-$progname          as non-root was not a problem]
+${progname}:     [WARNING: current_euid=${EUID} (non-root).
+${progname}:      1. Any permission errors from removal may indicate need
+${progname}:         to run ${progname} as root.
+${progname}:      2. If no permission errors are reported, running ${progname}
+${progname}          as non-root was not a problem]
 EUID_WARNING
     fi
     rm -rf $magen_root
@@ -424,22 +430,22 @@ UNINSTALL_COMPLETE
 onenode_start_usage()
 {
     cat <<ONENODE_START_USAGE
-Usage: $prog_base $prog_opcode [--update]
+Usage: ${prog_base} ${prog_opcode} [--update]
         --update: update docker images (from image repo) or
                   [NOT YET IMPLEMENTED] source from git repo)
                   [Default:false]
 
 Description:
     Start the docker containers for the one-node magen instance's services.
-    Prior to that, shut down instance ($prog_location stop).
-    [Cleanup operation: "$pkg stop"]
+    Prior to that, shut down instance (${prog_location} stop).
+    [Cleanup operation: "${pkg} stop"]
 
     If images from the docker-repo are not present, they will be downloaded.
     If images are present, use them unless --update is given. (Downloading
     images can be slow and can hang.)
 
 Example:
-         bash$ $magen_root_printable/$prog_base $prog_opcode
+         bash$ ${magen_root_printable}/${prog_base} ${prog_opcode}
 
 ONENODE_START_USAGE
 
@@ -467,35 +473,35 @@ onenode_start()
 	esac
 	shift
     done
+    ${onenode_scripts}/docker_clean.sh
 
     if [ -d ${magen_source} ]; then
-        docker-compose -f docker-compose-runall-source.yml up -d
+        ${onenode_scripts}/docker_compose_runall.sh --path=docker-compose-runall-source.yml --network=${docker_network}
         exit 1
     fi
 
-    cd $magen_root
+    cd ${magen_root}
     echo "$progname: Starting docker containers for magen services"
-    $onenode_scripts/docker_compose_check.sh || exit 1
-    if [ $update = true ]; then
+    ${onenode_scripts}/docker_compose_check.sh || exit 1
+    if [ ${update} = true ]; then
 	docker_image_update
     fi
-    $prog_location stop
-    $onenode_scripts/docker_clean.sh
-    $onenode_scripts/docker_compose_runall.sh docker-compose-runall.yml magen_onenode_net $docker_registry
+    ${prog_location} stop
+    ${onenode_scripts}/docker_compose_runall.sh --path=docker-compose-runall.yml --network=${docker_network} --account=${docker_registry}
     status=$?
-    if [ $status != 0 ]; then
+    if [ ${status} != 0 ]; then
 	echo "$progname: ERROR: docker_compose_runall failed ($status)" >&2
-	exit $status
+	exit ${status}
     fi
     docker ps
-    hwa_secrets_dir=$magen_data/hwa/data/secrets
-    host=$(grep hostname $hwa_secrets_dir/hwa_config.json |
+    hwa_secrets_dir=${magen_data}/hwa/data/secrets
+    host=$(grep hostname ${hwa_secrets_dir}/hwa_config.json |
 	       sed -e 's/\"//g' -e 's/.*hostname: //' )
     cat <<START_COMPLETE
-$progname: "onenode start" step complete.
-$progname: NEXT STEP: Browse to "https://$host:5002" to talk to hwa app.
-$progname:            Bypass browser warnings about unverifiable
-$progname:            (i.e. self-signed) certificates.
+${progname}: "onenode start" step complete.
+${progname}: NEXT STEP: Browse to "https://$host:5002" to talk to hwa app.
+${progname}:            Bypass browser warnings about unverifiable
+${progname}:            (i.e. self-signed) certificates.
 START_COMPLETE
 }
 
@@ -537,14 +543,18 @@ onenode_stop()
 	shift
     done
 
-    if [ ! -d $magen_data ]; then
+    if [ ! -d ${magen_data} ]; then
 	echo "$progname: FATAL: $magen_data does not exist (run \"$prog_base install\"(?)) " >&2
 	exit 1
     fi
-    cd $magen_root
+    cd ${magen_root}
     echo "$progname: Shutting down docker containers for magen services"
+    if [ -d ${magen_source} ]; then
+        docker-compose -f docker-compose-runall-source.yml kill
+        exit 1
+    fi
     docker-compose -f docker-compose-runall.yml kill
-    $onenode_scripts/docker_clean.sh
+    ${onenode_scripts}/docker_clean.sh
 
 }
 
@@ -578,8 +588,8 @@ prog_opcode=
 
 progname=
 prog_location=$0
-prog_base=$(basename $prog_location)
-prog_dir=$(dirname $prog_location)
+prog_base=$(basename ${prog_location})
+prog_dir=$(dirname ${prog_location})
 
 PATH=$onenode_scripts:$PATH
 

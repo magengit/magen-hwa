@@ -12,7 +12,7 @@ Policies are managed (e.g. created) through the Magen Policy Service ReST API, d
 Current version: ```1.0a3```
 
 ## Demo
-To set up the demo "Hello, World" App, please see [**Readme**](onenode_env/README.me).
+To set up the demo "Hello, World" App, please see [**Readme**](onenode_env/README.md).
 
 ## HWA Details
 
@@ -58,6 +58,13 @@ default:
 3. ```docker -v```: Docker version **17.03.0-ce**, build 60ccb22
 4. ```docker-compose -v```: docker-compose version **1.11.2**, build dfed245
 5. Make sure AWS user and **root** have correct rights to Cisco-Magen github organization
+
+## Adopt this Infrastructure
+
+1. get [**magen-helper**](https://github.com/magengit/magen-helper) submodule to the repo following instructions in submodule Readme
+2. follow the structure in [**docker_ks**](ks/docker_ks) to create ```docker-compose.yml``` and ```Dockerfile``` files
+3. use [**Makefile**](ks/Makefile) as an example for building make automation
+
 
 ## Targets
 

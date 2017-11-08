@@ -27,7 +27,8 @@ bash$ git clone https://github.com/magengit/magen-hwa.git
 bash$ ./onenode_install.sh install --build-from {dockerimage|source|source_latest}
 ```
 
-You can choose to build demo from ```dockerimage``` (will pull from dockerhub) or ```source``` (will clone git repos and build images locally).
+You can choose to build demo from ```dockerimage``` (will pull from dockerhub), ```source``` (will clone git tagged repos and build images locally) or
+```source_latest``` (will pull latest code base)
 
 By default when building from ```source``` a stable tags (v1.0) are used, but you can specify 'latest' option to ```onenode_install.sh``` script in order to build from latest source.
 ###### Note, that the demo is stable with tagged src and might not run correctly with latest code as we're under active development and changes of API.
@@ -96,3 +97,11 @@ After build is done follow the instructions of the output.
    ```
    bash$ ~/magen_onenode/onenode.sh uninstall
    ```
+
+## Troubleshooting
+
+If you see the message below just follow the instructions on creating a network.:
+
+ERROR: Network magen_onenode_net declared as external, but could not be found. Please create the network manually using `docker network create magen_onenode_net` and try again.
+REPENNO-M-J027:magen_onenode repenno$ docker network create magen_onenode_net
+04aeec3eefcabe3bc3836d7a6e77069cb693b9ac30212d19ec3403fb7b4bfb88

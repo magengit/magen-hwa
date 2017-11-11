@@ -11,6 +11,15 @@ Policies are managed (e.g. created) through the Magen Policy Service ReST API, d
 
 Current version: ```1.0a3```
 
+## Git clone
+
+All of Magen services depend on an operations git submodule [**magen_helper**](https://github.com/magengit/magen-helper).
+When cloning this repo, make sure to provide ```--recursive``` flag or after the clone execute a command to update ```magen-helpers``` git submodule:
+
+```
+git submodule update --init --recursive
+```
+
 ## Demo
 To set up the demo "Hello, World" App, please see [**Readme**](onenode_env/README.md).
 

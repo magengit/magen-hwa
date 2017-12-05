@@ -18,7 +18,7 @@ The setup consists of 6 containers running on a single *nix instance.
 Clone this repo:
 
 ```
-bash$ git clone https://github.com/magengit/magen-hwa.git
+bash$ git clone --recursive https://github.com/magengit/magen-hwa.git
 ```
 
 ```cd``` to ```onenode_env``` directory. Command ```./onenode_install.sh install``` will display a usage of the script. Execute:
@@ -34,7 +34,7 @@ When building from ```source``` a stable tags (v1.0) are used. By using ```sourc
 
 After build is done follow the instructions of the output.
 
-## The demo script will perform next actions:
+## The demo script will perform next actions by itself:
 
 1. Create directory tree rooted at ```~/magen_onenode```
    - directory tree contents:
@@ -74,7 +74,7 @@ After build is done follow the instructions of the output.
 
 ## Steps after ```onenode_install.sh``` build
 
-2. Run onenode.sh (from directory created by install in step 1) to
+1. Run onenode.sh (from directory created by install in step 1) to
    - create docker images
    - start running hwa application, magen services, and mongod.
 
@@ -86,12 +86,57 @@ After build is done follow the instructions of the output.
     ```
     bash$ ~/magen_onenode/onenode.sh start --update
     ```
-3. Shut down containers for above services (run from
+    
+## The HWA Demo
+
+
+1. Havigate to https://&lt;host&gt;:5002 and accept any browser warnings
+
+2. On the top menu click on **login** and accept any browser warnings. Now are logged into the system
+
+3. Now on the top menu click on **ingestion** to ingest your first file. Go through the upload procedure 
+
+4. Clicking on **repository** should show your ingested file(s)
+
+5. Clicking on **view** should display an error message since user is not authorized
+
+6. Using a tool like POSTMAN send the following HTTP POST Request:
+
+Headers:
+
+```
+Content-Type:application/json
+Accept:application/json
+```
+
+Body
+
+```
+{
+    "policy_contract": [
+        {   
+            "name" : "eng policy",
+            "principal": "wiley@acmebirdseed.com",
+            "principal_group": "",
+            "action": "open",
+            "resource_doc": "",
+            "resource_group": "architecture",
+            "time_validity_pi" : 2592000
+        }
+    ]
+}
+```
+
+7. Clicking on **view** now should display the file 
+ 
+## Stopping HWA 
+    
+1. Shut down containers for above services (run from
    directory created by "onenode.sh create" in step 1)
    ```
    bash$ ~/magen_onenode/onenode.sh stop
    ```
-4. Uninstall, including deleting ~/magen_onenode directory created in step 1)
+2. Uninstall, including deleting ~/magen_onenode directory created in step 1)
    and onenode docker images created in step 2.
    ```
    bash$ ~/magen_onenode/onenode.sh uninstall

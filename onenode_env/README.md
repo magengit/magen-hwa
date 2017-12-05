@@ -1,7 +1,8 @@
 # Demo Setup for 'Hello, World!' App
 
-#### This is a helper to set up Magen Demo on a single host.
---------
+
+## Single Host Magen Demo
+
 
 The setup consists of 6 containers running on a single *nix instance.
 
@@ -13,7 +14,22 @@ The setup consists of 6 containers running on a single *nix instance.
    4. "Hello, World!" app to demonstrate how the core services work
    together.
 
-## Usage
+## Common Requirements across OS
+
+0. ```python3 -V```: Python >= **3.6.3** 
+1. ```pip3 -V```: pip **9.0.1**
+2. ```docker -v```: Docker version **17.03.0-ce**, build 60ccb22
+3. ```docker-compose -v```: docker-compose version **1.11.2**, build dfed245
+   
+## Requirements: MacOS X
+0. ```make -v```: GNU Make **3.81**
+1. A REST tool like [POSTMAN](https://www.getpostman.com/apps)
+
+## Requirements: AWS EC2 Ubuntu 16.04
+0. ```make -v```: GNU Make **4.1**
+1. Your preferred REST Tool
+
+## Installing HWA Demo
 
 Clone this repo:
 
@@ -34,7 +50,7 @@ When building from ```source``` a stable tags (v1.0) are used. By using ```sourc
 
 After build is done follow the instructions of the output.
 
-## The demo script will perform next actions by itself:
+## The demo script will perform the next actions *by itself*:
 
 1. Create directory tree rooted at ```~/magen_onenode```
    - directory tree contents:
@@ -72,7 +88,7 @@ After build is done follow the instructions of the output.
        - manual acceptance is needed twice: one for hwa's self-signed cert
          and once for redirect to id service's self-signed cert.
 
-## Steps after ```onenode_install.sh``` build
+## Running HWA
 
 1. Run onenode.sh (from directory created by install in step 1) to
    - create docker images
@@ -90,7 +106,7 @@ After build is done follow the instructions of the output.
 ## The HWA Demo
 
 
-1. Havigate to https://&lt;host&gt;:5002 and accept any browser warnings
+1. Navigate to https://&lt;host&gt;:5002 and accept any browser warnings
 
 2. On the top menu click on **login** and accept any browser warnings. Now are logged into the system
 
@@ -100,7 +116,11 @@ After build is done follow the instructions of the output.
 
 5. Clicking on **view** should display an error message since user is not authorized
 
-6. Using a tool like POSTMAN send the following HTTP POST Request:
+6. Using a tool like [POSTMAN](https://www.getpostman.com/apps) send the following HTTP POST Request to the URL: 
+
+```
+http://localhost:5000/magen/policy/v2/contracts/contract/:
+```
 
 Headers:
 
